@@ -1,0 +1,101 @@
+A cpu desse exercício é uma cpu hipotética, onde as instruções possuem apenas 2 bytes/16 bits.
+As instruções dessa arquitetura tem essa configuração:
+
+    ---  XAAA ---
+
+Onde X (4 bits mais significativos) define qual tipo de operação será executada e AAA define o endereço da memória a ser utilizado para realizar essa operação.
+
+As instruções da CPU são processadas em 2 ciclos: o primeiro para sua busca e o segundo para a sua execução
+
+Agora vamos à atividade:
+
+Ciclo 1 (busca):
+    PC = 300 (posição da memória onde está a instrução)
+    IR = 1830 (instrução armazenada na posição 300)
+    AC = XXXX (Não sabemos sobre o estado inicial de AC)
+    mem[830] = 20
+    mem[832] = 800
+
+Ciclo 2 (execução de 1830/ load 830):
+    PC = 302 (na execução o PC é incrementado)
+    IR = 1830
+    AC = 20
+    mem[830] = 20
+    mem[832] = 800
+
+Ciclo 3:
+    PC = 302
+    IR = 6000
+    AC = 20
+    mem[830] = 20
+    mem[832] = 800
+
+Ciclo 4 (exec de 6000/shiftl):
+    -> O conteúdo presente em AC será descolado 1 bit para a esquerda. O endereço não é relevante nesta operação.
+
+    PC = 304 (PC incrementado)
+    IR = 6000
+    AC = 40
+    mem[830] = 20
+    mem[832] = 800
+
+Ciclo 5:
+    PC = 304
+    IR = 2830
+    AC = 40
+    mem[830] = 20
+    mem[832] = 800
+
+Ciclo 6 (store 830):
+    PC = 306
+    IR = 2830
+    AC = 40
+    mem[830] = 40   #o conteúdo de AC foi salvo na posição 830
+    mem[832] = 800
+
+Ciclo 7:
+    PC = 306
+    IR = 1832
+    AC = 40
+    mem[830] = 40
+    mem[832] = 800
+
+Ciclo 8 (load 832):
+    PC = 308 (PC+2)
+    IR = 1832
+    AC = 800 (valor em 832)
+    mem[830] = 40
+    mem[832] = 800
+
+Ciclo 9:
+    PC = 308
+    IR = 7000
+    AC = 800
+    mem[830] = 40
+    mem[832] = 800
+
+
+Ciclo 10 (shiftr):
+    PC = 30a
+    IR = 7000
+    AC = 400
+    mem[830] = 40
+    mem[832] = 800
+
+
+Ciclo 11:
+    PC = 30a
+    IR = 2832
+    AC = 400
+    mem[830] = 40
+    mem[832] = 800
+
+Ciclo 12 (store 832):
+    PC = 30c
+    IR = 2832
+    AC = 400
+    mem[830] = 40
+    mem[832] = 400
+
+
+
